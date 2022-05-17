@@ -1,0 +1,38 @@
+﻿@model imdb.Models.movie
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+
+
+<h2 class="mt-5 text-center">Delete Movie</h2>
+<body style="background-color: rgb(228, 228, 228)">
+    <div class="profile mb-5 text-center mt-3 shadow">
+
+        <div class="row">
+            <div class="container">
+
+                <img class=" col-12 image-profile p-3" src="@Model.photo">
+                <h3 class="text-primary">@Model.name</h3>
+                <p class="parag-movie">
+                     @Model.description
+                </p>
+
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions text-white mb-2">
+                        <input type="submit" value="Delete" class="btn btn-primary" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </div>
+
+
+        </div>
+    </div>
+</body>

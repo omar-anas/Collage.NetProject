@@ -1,0 +1,40 @@
+﻿@model imdb.Models.director
+
+@{
+    ViewBag.Title = "Delete Director";
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<h2 class="mt-5 text-center">Delete Director Profile</h2>
+<body style="background-color: rgb(228, 228, 228)">
+    <div class="profile mb-5 text-center mt-3 shadow">
+
+        <div class="row">
+            <div class="container">
+
+                <img class=" col-12 image-profile p-3" src="@Model.photo">
+                <h3 class="text-primary">@Model.FirstName @Model.LastName</h3>
+                <h5> was born in @Model.age </h5>
+                <p class="parag-movie">
+                    @Model.FirstName @Model.LastName is an American film Dictor, producer,
+                    and screenwriter. He began his career in the New Hollywood era and
+                    is currently the most commercially successful director of all time.
+                </p>
+
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions text-white mb-2">
+                        <input type="submit" value="Delete" class="btn btn-primary" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </div>
+
+
+        </div>
+    </div>
+</body>

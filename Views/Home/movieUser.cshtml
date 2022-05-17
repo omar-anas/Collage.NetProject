@@ -1,0 +1,103 @@
+﻿@model imdb.Controllers.acts_in_movie
+@{
+    ViewBag.Title = "movieUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body class="m-auto">
+    <h2 class="text-center text-waring mt-5"> Movie Details</h2>
+
+    <div class="container">
+        <div class="one-movie">
+            <div class="row mt-5 text-center">
+
+                <div class="col-12">
+
+                    <div class="card border-warning shadow mb-5 bg-white ">
+                        <div class="card-body">
+                            <img src="@Model.movie1.photo" alt="" class="img-fluid  w-100 mb-3">
+                            <h3>@Model.movie1.name</h3>
+                            <p class="parag-movie">
+                                @Model.movie1.description
+                            </p>
+                            <p><i class="fa fa-thumbs-up"></i> @Model.movie1.Likes.Where(x => x.like == true).Count()</p>
+
+                            <p><i class="fa fa-thumbs-down"></i> @Model.movie1.Likes.Where(x => x.like == false).Count()</p>
+                            <h4>
+                                <span class="dirspan"> Actors </span> |
+                                <br />
+                                <form method="post" action="/Admin/one_movie/@Model.movie1.act_In_Mov">
+                                    @{ foreach (var item in Model.movie1.act_In_Mov)
+                                        {
+                                            <a href="/actors/details/@item.id" class="text-decor">
+                                                <img src="@item.actors.photo" height="80" class="rounded-circle" />
+                                                <span>@item.actors.FirstName @item.actors.LastName</span>
+                                                <br />
+                                            </a>
+
+                                        } }
+
+                            </h4>
+                            <h4>
+                                <span class="dirspan text-center"> Director </span> |
+                                <br />
+                                <a href="/Admin/ProfileDir/@Model.movie1.director.id" class="text-decor">
+                                    <img src="@Model.movie1.director.photo" height="80" class="rounded-circle" />
+                                    @Model.movie1.director.FirstName @Model.movie1.director.LastName
+                                </a>
+                            </h4>
+                            </form>
+
+
+                        </div>
+                    </div>
+                    @if (Session["Userid"] != null)
+                    {
+                        <form method="post" action="/home/movieUser/@Model.movie1.id">
+                            <textarea name="newcomment" cols="50" rows="5"></textarea>
+                            <input class="btn btn-warning" type="submit" name="sumbit" />
+                        </form>
+
+                        if (Model.yourlike == null)
+                        {
+
+
+                            <form method="post" action="/home/LikemovieUser/@Model.movie1.id">
+
+                                <input type="submit" class="btn btn-primary" value="like" />
+                            </form>
+
+                            <form method="post" action="/home/DislikemovieUser/@Model.movie1.id">
+
+                                <input class="btn btn-danger" type="submit" value="Dislike"  />
+                            </form>
+                        }
+                        else
+                        {
+                            if (Model.yourlike == true)
+                            {
+                                <label class="text-secondary">you liked the movie</label>
+                            }
+                            else
+                            {
+                                <label class="text-secondary">you disliked the movie</label>
+                            }
+                        }
+                    }
+                        <hr />
+
+                        @foreach (var item in Model.movie1.Comments)
+                        {
+                            <a class="text-decor" href="#"><h3>@item.User.FristName</h3></a>
+
+                            <label class="text-bold">@item.comment</label>
+                            <br />
+                            <hr />
+                        }
+                    
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</body>

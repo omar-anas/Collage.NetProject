@@ -1,0 +1,36 @@
+﻿@model imdb.Models.SearchModel
+@{
+    ViewBag.Title = "search";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .text-search {
+        color:black;
+    }
+</style>
+<h2 class="mt-5 text-center text-warning ">Your search result</h2>
+
+<h2 class="text-info ms-2">Movies</h2>
+@foreach (var item in Model.movies)
+{
+    <a href="\Home\movieUser\@item.id " class="text-search text-decor text-black ms-2"> @item.name</a>
+    <br />
+}
+<hr />
+
+<h2 class="mt-5 text-info ms-2">Actors</h2>
+@foreach (var item in Model.actors)
+{
+    <a href="\actors\details\@item.id" class="text-search text-decor text-black ms-2" > @item.FirstName @item.LastName </a>
+    <br />
+}
+<hr />
+
+<h2 class="mt-5 text-info ms-2">Directors</h2>
+@foreach (var item in Model.directors)
+{
+    <a href="\admin\profiledir\@item.id" class="text-search text-decor text-black ms-2">@item.FirstName @item.LastName</a>
+    <br />
+}
+<hr />

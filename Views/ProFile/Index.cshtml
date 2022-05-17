@@ -1,0 +1,82 @@
+﻿@model imdb.Models.User
+@using imdb.Models;
+@{
+    ViewBag.Title = "Your Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<h2 class="mt-5 text-center ">Your Profile</h2>
+<body style="background-color: rgb(228, 228, 228)">
+    <div class="profile mb-5 text-center mt-3 shadow">
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+
+                        <img class=" col-12 image-profile rounded p-3" src="@Model.Photo">
+                        <h3 class="text-primary">@Model.FristName @Model.lastName</h3>
+                        <a href="/profile/edit/@Model.Id" class="btn btn-warning">edit profile</a>
+                        <hr />
+                        <br />
+                        <!-- Favorite Actors -->
+                        <h4>Favourite Actors</h4>
+                        <form method="post" action="/profile/addFavActor">
+                            
+                            <select name="act" class="form-select form-select-md mb-3 ">
+                                @{
+                                    foreach (actor item in ViewBag.allactor)
+                                    {
+                                        <option value="@item.id">@item.FirstName@item.LastName</option>
+                                    }
+                                }
+                            </select>
+                            <input type="submit" class="btn btn-warning" value="send" />
+                        </form>
+
+                        <a href="/fav_act/index" class="text-decor"
+                           >Show My Favorite Actors </a>
+                        <hr />
+                        <br />
+                        <!-- Favorite Movies -->
+                        <h4>Favourite Movies</h4>
+                        <form method="post" action="/profile/addFavMovie">
+                            
+                            <select name="movie" class="form-select form-select-md mb-3">
+                                @{
+                                    foreach (movie item in ViewBag.allmovies)
+                                    {
+                                        <option value="@item.id">@item.name</option>
+                                    }
+                                }
+                            </select>
+                            <input type="submit" class="btn btn-warning" value="send" />
+                        </form>
+                        <a href="/fav_mov/index" class="text-decor">Show My Favorite Movies </a>
+
+                        <br />
+                        <hr />
+                        <!-- Favorite Directors -->
+                        <h4>Favourite Directors</h4>
+                        <form method="post" action="/profile/addFavDir">
+                           
+                            <select name="dir" class="form-select form-select-md mb-3">
+                                @{
+                                    foreach (director item in ViewBag.alldirctor)
+                                    {
+                                        <option value="@item.id">@item.FirstName@item.LastName</option>
+                                    }
+                                }
+                            </select>
+                            <input type="submit" class="btn btn-warning" value="send" />
+                        </form>
+                        <a href="/fav_dir/index" class="text-decor">Show My Favorite Directors </a>
+                    </div>
+
+
+                </div>
+            </div>
+            </div>
+        </div>
+</body>
+

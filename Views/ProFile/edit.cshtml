@@ -1,0 +1,39 @@
+﻿@model imdb.Models.User
+@{
+    ViewBag.Title = "edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2 class="text-info text-center">Edit Profile</h2>
+
+<form class="join mx-0 mb-5" method="post" action="/profile/edit/@Model.Id" enctype="multipart/form-data">
+    <div class="row mx-0 mb-5 ">
+        <div class="container">
+
+            <div class="form-div rounded shadow">
+
+                <div class="row mx-0 ">
+                    <div class="col-12 form-section ">
+
+                        <div class=" p-1 pt-1  pr-5 form-div__input-container">
+                            <label for="exampleFormControlInput1" class="form-label form-div__form-label">FirstName</label>
+                            <input type="text" name="fname" value="@Model.FristName" class="form-control form-div__form-control" placeholder="">
+                        </div>
+                        <div class=" p-1 pr-5 form-div__input-container">
+                            <label class="form-label form-div__form-label">LastName</label>
+                            <input type="text" name="lname" value="@Model.lastName" class="form-control form-div__form-control" placeholder="">
+                        </div>
+
+
+                        <div class="p-1 pr-5 form-div__input-container">
+                            <label class="form-label form-div__form-label">ProfilePicture</label>
+                            <input class="form-control form-div__form-control" type="file" name="photo" />
+                        </div>
+                        <button class="btn text-white form-div__btn mb-3  mt-2" type="submit">Submit</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

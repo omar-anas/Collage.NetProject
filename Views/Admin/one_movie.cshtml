@@ -1,0 +1,62 @@
+﻿@model imdb.Controllers.acts_in_movie
+@{
+    ViewBag.Title = "one_movie";
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+<br />
+<br />
+<body class="m-auto">
+
+<h2 class="text-center text-waring">One Movie</h2>
+
+<div class="container">
+    <div class="one-movie">
+    <div class="row mt-5 text-center">
+       
+                <div class="col-12">
+                  
+                        <div class="card border-warning shadow mb-5 bg-white ">
+                            <div class="card-body">
+                                <img src="@Model.movie1.photo" alt="" class="img-fluid  w-100 mb-3">
+                                <h3>@Model.movie1.name</h3>
+                                <p class="parag-movie">
+                                    @Model.movie1.description
+                                </p>
+                                <h4>
+                                    <span class="dirspan"> Actors </span> |
+                                    <br />
+                                    <form method="post" action="/Admin/one_movie/@Model.movie1.act_In_Mov">
+                                        @{ foreach (var item in Model.movie1.act_In_Mov)
+                                            {
+                                                <a href="/actors/Details/@item.id_act" class="text-decor">
+                                                    <img src="@item.actors.photo"  height="80" class="rounded-circle"/>
+                                                    <span>@item.actors.FirstName @item.actors.LastName</span>
+                                                    <br />
+                                                </a>
+                                               
+
+
+
+                                            } }
+                                        
+                                </h4>
+                                <h4>
+                                    <span class="dirspan text-center"> Director </span> |
+                                    <br />
+                                    <a href="/Admin/ProfileDir/@Model.movie1.director.id" class="text-decor">
+                                        <img src="@Model.movie1.director.photo" height="80" class="rounded-circle" />
+                                        @Model.movie1.director.FirstName @Model.movie1.director.LastName
+                                    </a>
+                                </h4>
+                                </form>
+
+
+                            </div>
+                        </div>
+                    
+                </div>
+         
+    </div>
+   </div>
+</div>
+</body>

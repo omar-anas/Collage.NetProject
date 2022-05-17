@@ -1,0 +1,18 @@
+﻿@model imdb.Models.director
+@{
+    ViewBag.Title = "Dir_one";
+}
+
+<h2>Dir_one</h2>
+
+<br />
+<img src="@Model.photo" height="200px" />
+<br />
+<h2>@Model.FirstName @Model.LastName</h2>
+<br />
+@{ foreach (var item in Model.movies)
+    {
+        <img src="@item.photo" height="50px" />
+        <h1>@item.name </h1>
+    }
+}

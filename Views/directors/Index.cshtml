@@ -1,0 +1,55 @@
+﻿@model IEnumerable<imdb.Models.director>
+
+@{
+    ViewBag.Title = "Directors";
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<body>
+<div class="backcolor">
+    <h1 class="text-center pt-4">IMDB Dirctors</h1>
+    <div class="container">
+
+        <p>
+            
+            <h3> <a class="text-decor" href="/Admin/Add_Dir">Add New Director</a></h3>
+        </p>
+        <table class="table text-white">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.photo)
+                </th>
+                <th>
+                    Born
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+
+                        <img src="@Html.DisplayFor(modelItem => item.photo)" height="150px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.age)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div>
+</div>
+</body>
