@@ -1,0 +1,50 @@
+﻿@model IEnumerable<imdb.Models.fav_act>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 20px;
+            padding: 50px;
+        }
+
+        img {
+            margin: 10px;
+            background-color: darkred;
+            padding: 10px 1200px 10px 30px;
+        }
+
+        a {
+            padding: 50px;
+            color: darkred;
+        }
+
+        h1 {
+            color: darkred;
+            font: italic;
+            font-size: xx-large;
+            text-shadow: 1px 1px 1px red;
+        }
+    </style>
+
+</head>
+<h1> Favourite actors</h1>
+<body>
+
+    @foreach (var item in Model)
+    {
+
+        <img src="@Html.DisplayFor(modelItem => item.Actor.photo)" height="200px" />
+        <br />
+        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+        <br />
+    }
+
+</body>
+</html>

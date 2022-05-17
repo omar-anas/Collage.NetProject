@@ -1,0 +1,44 @@
+﻿@model imdb.Models.actor
+@{
+    ViewBag.Title = "Actor Profile";
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<h2 class="mt-5 text-center">Actor Profile</h2>
+<body style="background-color: rgb(228, 228, 228)">
+    <div class="profile mb-5 text-center mt-3 shadow">
+
+        <div class="row">
+            <div class="container">
+
+                <img class=" col-12 image-profile p-3" src="@Model.photo">
+                <h3 class="text-primary">@Model.FirstName @Model.LastName</h3>
+                <h5> He was born in @Model.age </h5>
+                <p class="parag-movie">
+                    @Model.FirstName @Model.LastName is an American film Actor, producer,
+                    and screenwriter. He began his career in the New Hollywood era and
+                    is currently the most commercially successful director of all time.
+                </p>
+
+                <br />
+                <div class="row px-2">
+                    @{ foreach (var item in Model.act_In_Mov)
+                        {
+
+                            <div class="col-4">
+                                <img src="@item.movies.photo" class="rounded-circle" height="80px" />
+                                <a class="text-decor " href="/admin/one_movie/@item.id_mov">
+                                    <h4>@item.movies.name </h4>
+                                </a>
+                            </div>
+
+                        }
+                    }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+

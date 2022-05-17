@@ -1,0 +1,163 @@
+﻿body {
+    padding: 60px 0 0 0;
+    margin: 0;
+}
+/*nav*/
+.navbar {
+    background: #02353c
+}
+
+.navbar-border {
+    border-bottom: 1px solid #0a0a2627;
+    ;
+}
+
+.navbar-brand__img {
+    height: auto;
+    width: 100px;
+}
+
+.collapse-width {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar ul li {
+    padding-left: 1rem;
+}
+
+    .navbar ul li a {
+        color: #fff;
+        font-size: 1.1rem;
+    }
+
+    .navbar ul li a {
+        color: #fff;
+        display: inline-block;
+        margin: 0;
+    }
+
+        .navbar ul li a:after {
+            display: block;
+            content: '';
+            border-bottom: solid 2px #ffffff;
+            transform: scaleX(0);
+            transition: transform 250ms ease-in-out;
+        }
+
+        .navbar ul li a:hover:after {
+            transform: scaleX(1);
+        }
+
+.navbar-toggler {
+    background-color: #02353c;
+}
+/*header home*/
+.carousel-control-next, .carousel-control-prev {
+    opacity: .1 !important;
+    width: 8%;
+}
+/*footer*/
+footer {
+    background-color: #101414ee;
+    height: 30px;
+    color: #fff;
+}
+
+.form-div__h5 {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #272646;
+}
+/*form login*/
+.join {
+    width: 450px;
+    margin: auto !important;
+}
+
+.img-login {
+    height: 200px;
+    width: auto;
+    margin-left: 15%
+}
+
+.img-register {
+    height: 200px;
+    width: auto;
+    margin-left: 30%
+}
+
+.form-div__form-label {
+    color: #5a5a5a;
+}
+
+.form-div__form-control {
+    background-color: #ffffff;
+    padding-top: .5rem;
+    padding-bottom: .5rem
+}
+
+.check {
+    margin-left: -15px;
+}
+
+.form-div__btn {
+    background-color: #121131;
+    border: none;
+    padding: .6rem 1.4rem;
+    font-size: .7rem;
+    margin-left: 310px;
+}
+
+.link_register {
+    text-decoration: none;
+}
+
+.form-div {
+    background-color: #ffffff;
+}
+/* movie */
+.text-decor{
+    text-decoration:none !important;
+
+}
+.img-movie {
+    height:400px
+}
+.parag-movie{
+    color:#5a5a5a
+}
+.selection {
+    background-color: #ffffff;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-color:rgba(221, 221, 221, 0.80)
+    
+}
+.dirspan {
+    color: black !important;
+}
+.profile {
+    width: 400px;
+    background-color: white;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.image-profile {
+    height: 300px;
+    
+}
+.one-movie {
+    width: 500px;
+    margin: auto;
+}
+.backcolor{
+    color:#fff !important;
+    background:#000 !important;
+}
+.div-edit {
+    width: 400px;
+    margin: auto;
+    padding-left: 50px;
+}

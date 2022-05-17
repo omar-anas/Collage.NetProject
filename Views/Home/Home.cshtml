@@ -1,0 +1,31 @@
+﻿@model IList<imdb.Models.movie>
+@using imdb.Models;
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-5 text-center">
+        @{ foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-5">
+                    <a href="/home/movieUser/@item.id" class="text-decor">
+                        <div class="card border-info shadow  mb-5 bg-white ">
+                            <div class="card-body ">
+                                <img src="@item.photo" alt="" class="img-fluid  w-100 mb-3">
+                                <h3>@item.name</h3>
+                                <p><i class="fa fa-thumbs-up"></i> @item.Likes.Where(x => x.like == true).Count()</p>
+
+                                <p><i class="fa fa-thumbs-down"></i> @item.Likes.Where(x => x.like == false).Count()</p>
+                                <p class="parag-movie">
+                                    @item.description
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>

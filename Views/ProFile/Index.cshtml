@@ -1,0 +1,120 @@
+﻿@model imdb.Models.User
+@using imdb.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    body {
+        background-color: antiquewhite;
+    }
+
+    h2 {
+        font: bolder;
+        margin: 20px;
+    }
+
+    image {
+        margin-top: 60px;
+    }
+
+    img {
+        margin-left: 30px;
+    }
+
+    form {
+        margin: 30px;
+        padding: 20px;
+    }
+
+    a {
+        padding: 20px;
+        margin: 30px;
+    }
+</style>
+<h2>@Model.FristName @Model.lastName</h2>
+<img .class="image" src="@Model.Photo" height="150px" />
+<br />
+<br />
+__________________________________________________________
+
+<!-- Favorite Actors -->
+<h2>Favourite Actors</h2>
+<form method="post" action="/profile/addFavActor">
+    <label>Favorite Actor</label>
+    <select name="act">
+        @{
+            foreach (actor item in ViewBag.allactor)
+            {
+                <option value="@item.id">@item.FirstName@item.LastName</option>
+            }
+        }
+    </select>
+    <input type="submit" value="send" />
+</form>
+<!--
+    {
+    foreach (var item in Model.Fav_Acts)
+    {
+        <img src="item.Actor.photo" height="150px" />
+    }
+}
+-->
+<a href="/fav_act/index">Show My Favorite Actors </a>
+<br />
+__________________________________________________________
+<br />
+<!-- Favorite Movies -->
+<h2>Favourite Movies</h2>
+<form method="post" action="/profile/addFavMovie">
+    <label>Favorite movie</label>
+    <select name="movie">
+        @{
+            foreach (movie item in ViewBag.allmovies)
+            {
+                <option value="@item.id">@item.name</option>
+            }
+        }
+    </select>
+    <input type="submit" value="send" />
+</form>
+<a href="/fav_mov/index">Show My Favorite Movies </a>
+<!--
+   {
+    foreach (var item in Model.Fav_Acts)
+    {
+        <img src="item.Actor.photo" height="150px" />
+    }
+}
+
+-->
+<br />
+___________________________________________________________
+<!-- Favorite Directors -->
+<h2>Favourite Directors</h2>
+<form method="post" action="/profile/addFavDir">
+    <label>Favorite Director</label>
+    <select name="dir">
+        @{
+            foreach (director item in ViewBag.alldirctor)
+            {
+                <option value="@item.id">@item.FirstName@item.LastName</option>
+            }
+        }
+    </select>
+    <input type="submit" value="send" />
+</form>
+<a href="/fav_dir/index">Show My Favorite Directors </a>
+<br />
+<br />
+__________________________________________________________
+<!--
+    {
+    foreach (var item in Model.Fav_Acts)
+    {
+        <img src="item.Actor.photo" height="150px" />
+    }
+}
+
+-->

@@ -1,0 +1,47 @@
+﻿@model imdb.Models.fav_mov
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        h3 {
+            margin: 30px;
+            font-size: xx-large;
+            font: bolder;
+            padding: 20px;
+            color: darkred;
+        }
+
+        div {
+            margin: 50px;
+        }
+
+        input {
+            color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <h3>Are you sure you want to delete this Movie?</h3>
+    <div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

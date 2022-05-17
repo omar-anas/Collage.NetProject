@@ -1,0 +1,32 @@
+﻿@model imdb.Models.SearchModel
+@{
+    ViewBag.Title = "search";
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>search</h2>
+
+<h2>Movies</h2>
+@foreach (var item in Model.movies)
+{
+    @item.name
+    <br />
+}
+<hr />
+
+<h2>Actors</h2>
+@foreach (var item in Model.actors)
+{
+    @item.FirstName
+    <br />
+}
+<hr />
+
+<h2>Directors</h2>
+@foreach (var item in Model.directors)
+{
+    @item.FirstName
+    <br />
+}
+<hr />

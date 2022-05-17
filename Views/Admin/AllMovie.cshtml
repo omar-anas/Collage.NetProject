@@ -1,0 +1,62 @@
+﻿@model IList<imdb.Models.movie>
+@using imdb.Models;
+@{
+    ViewBag.Title = "AllMovie";
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+<style>
+
+    a {
+        color: #ffc107;
+    }
+   
+</style>
+<br />
+<br />
+<h2 class="text-center mb-3">
+    <a class="text-decor text-dark" href="/movies/Index"> Update Movies</a> <span class="text-warning">|</span>
+    <a class="text-decor text-dark" href="/actors/Index"> Update Actors</a> <span class="text-warning">|</span>
+    <a class="text-decor text-dark" href="/directors/Index"> Update Directors</a>
+</h2>
+<h1 class=" text-warning text-center"style="margin-right: 20px;">All Movies</h1>
+<div class="container" style="margin-left: 500px;" >
+    <div class="mt-5 text-center " >
+        @{ foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 d-flex " >
+                    <a href="/admin/one_movie/@item.id" class="text-decor">
+                        <div class="card border-danger shadow mb-5 bg-white " >
+                            <div class="card-body" >
+                                <img src="@item.photo" alt="" class="img-fluid  w-100 mb-3" style="max-height: 500px; min-height: 500px;">
+                                <h3>@item.name</h3>
+                                <p class="parag-movie">
+                                    @(item.description.Length > 100 ? $"{item.description.Substring(0, 100)}..." : item.description)
+                                </p>
+                                <h4>
+                                    <span class="dirspan"> Director </span> |
+                                    <a href="/Admin/ProfileDir/@item.director.id" class="text-decor">
+                                        @item.director.FirstName @item.director.LastName
+                                    </a>
+                                </h4>
+                                <form method="post" action="/admin/add_actorin_mov/@item.id">
+                                    <h4>
+                                        Add actors
+                                    </h4>
+                                    <select name="act" class="form-select form-select-lg mb-3">
+                                        @{
+                                            foreach (actor actor in ViewBag.allmovie)
+                                            {
+                                                <option value="@actor.id">@actor.FirstName @actor.LastName</option>
+                                            }
+                                        }
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                </form>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>

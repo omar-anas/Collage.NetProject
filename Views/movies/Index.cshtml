@@ -1,0 +1,51 @@
+﻿@model IEnumerable<imdb.Models.movie>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+<div>
+    <h1 class="text-center pt-4" style="color: #ffc107">MOVIES</h1>
+    <div class="container">
+        <p>
+
+            <h3> <a class="text-decor" href="/Admin/Addmovie" style="color: black">Add New Movie</a></h3>
+        </p>
+        <table class="table table-dark">
+            <tr>
+                <th>
+                    Movie Name
+                </th>
+                <th>
+                    Poster
+                </th>
+                <th>
+                    Storyline
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.photo)" height="150px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary">@Html.ActionLink("Edit", "Edit", new { id = item.id }, new { style = "text-decoration:none; color: white;" })</button> |
+
+                        <button type="button" class="btn btn-outline-danger">@Html.ActionLink("Delete", "Delete", new { id = item.id }, new { style = "text-decoration:none; color: white;" })</button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
